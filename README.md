@@ -1,6 +1,6 @@
-# Flask App with Docker and Nginx
+# Flask App with Docker
 
-This repository provides a simple example of a Flask web application deployed using Docker and managed by Nginx as a reverse proxy.
+This repository provides a simple example of a Flask web application deployed using Docker.
 
 ## Prerequisites
 
