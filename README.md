@@ -12,15 +12,17 @@ Make sure you have the following installed on your machine:
 ## Getting Started
 
 1. Clone the repository:
-
    ```bash
-   git clone https://github.com/your-username/flask-docker-nginx.git
-   cd flask-docker-nginx
+   git clone https://github.com/debjyotiC/experiment-docker.git
 
-2. Build the Docker image using the following command
+2. Navigate to the project directory:
+   ```bash
+   cd experiment-docker
+
+4. Build the Docker image using the following command:
     ```bash
     docker build -t server .
    
-3. Run the Docker container using the following command
+5. Run the Docker container using the following command:
     ```bash
     docker run -p 5000:5000 server
