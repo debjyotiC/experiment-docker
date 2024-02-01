@@ -20,4 +20,4 @@ COPY nginx.conf /etc/nginx/sites-available/default
 EXPOSE 80
 
 # Define the command to run the application
-CMD ["bash", "-c", "nginx -g 'daemon off;' & python app.py"]
+CMD ["bash", "-c", "nginx -g 'daemon off;' & python server.py"]
