@@ -1,6 +1,9 @@
 version: '3'
 services:
   flask-app:
-    build: .
+    image: flask-app
+    container_name: flask-vision
     ports:
       - "192.168.0.101:5000:5000"
+    volumes:
+      - /var/lib/docker/volumes/uploaded_images:/app/uploaded-images
