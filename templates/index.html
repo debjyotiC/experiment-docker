@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 
+
 <body>
     <h1>Image Classifier</h1>
 
@@ -33,7 +34,7 @@
         </form>
     </div>
 
-    {% if uploaded_image %}
+    {% if uploaded_image is defined and uploaded_image %}
     <div>
         <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image" class="final-image">
         <form action="/classify" method="post">
