@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <style>
-            *{
+    * {
         margin: 0;
         padding: 0;
     }
@@ -102,6 +102,7 @@
             <label id="imagelabel" for="fileInput">Tap to Choose Image</label>
             <img src="" alt="Selected-Image" class="uploaded-image" id="uploadedimage">
             <button class="mui-btn" type="submit">UPLOAD</button>
+            <button class="mui-btn" type="button" onclick="resetForm()">RESET</button>
         </form>
     </div>
 
@@ -133,6 +134,18 @@ function displayImage(event) {
         };
         reader.readAsDataURL(fileInput.files[0]);
     }
+}
+
+// Function for RESET Button
+function resetForm() {
+    let fileInput = document.getElementById("fileInput");
+    let uploadImage = document.getElementById("uploadedimage");
+    let imageLabel = document.getElementById("imagelabel");
+
+    fileInput.value = ""; // Clear the file input
+    uploadImage.src = ""; // Clear the display image
+    uploadImage.style.display = 'none';
+    imageLabel.style.display = 'block';
 }
  </script>   
     <!-- BOOTSTRAP -->
