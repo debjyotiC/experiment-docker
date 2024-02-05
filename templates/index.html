@@ -25,6 +25,8 @@
 
     body {
         background-color: #f5f5f5;
+        background-image: url(../static/images/cool-background.png);
+        background-size: cover;
         color: #333;
         font-family: 'Roboto', sans-serif;
         margin: 20px;
@@ -44,6 +46,16 @@
 
     input[type="file"] {
         display: none;
+    }
+
+    .content {
+        background-color: #fff;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px 4px rgba(241, 238, 239, 0.8);
+        height: 90vh;
+        margin: auto;
+        width: 50%;
     }
 
     .choose-image {
@@ -95,7 +107,7 @@
     .upload {
         border-radius: 20px;
         margin-left: 20px;
-        margin-right: 120px;
+        margin-right: 100px;
     }
 
     .mui-btn:hover {
@@ -128,34 +140,37 @@
 
 
 <body>
-    <h1>IMAGE CLASSIFIER</h1>
 
-    <h2 id="uploadtext">Upload Image</h2>
-    <img src="" alt="Selected-Image" class="uploaded-image" id="uploadedimage">
+    <section class="content" id="content">
+        <h1>IMAGE CLASSIFIER</h1>
 
-    <div class="file-input-container">
-        <form action="/uploader" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" id="fileInput" accept="image/*" required onchange="displayImage(event)">
-            <div class="choose-image">
-                <div class="choose-image-btn">
-                    <label id="imagelabel" for="fileInput">Choose Image</label>
-                    <label id="nofilechosen" for="">No file Chosen</label>
+        <h2 id="uploadtext">Upload Image</h2>
+        <img src="" alt="Selected-Image" class="uploaded-image" id="uploadedimage">
+    
+        <div class="file-input-container">
+            <form action="/uploader" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="fileInput" accept="image/*" required onchange="displayImage(event)">
+                <div class="choose-image">
+                    <div class="choose-image-btn">
+                        <label id="imagelabel" for="fileInput">Choose Image</label>
+                        <label id="nofilechosen" for="">No file Chosen</label>
+                    </div>
+                    <button class="mui-btn upload" type="submit">UPLOAD</button>
                 </div>
-                <button class="mui-btn upload" type="submit">UPLOAD</button>
-            </div>
-            <button class="mui-btn reset" type="button" onclick="resetForm()">RESET</button>
-        </form>
-    </div>
-
-    {% if uploaded_image is defined and uploaded_image %}
-    <div>
-        <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image" class="final-image">
-        <form action="/classify" method="post">
-            <button class="mui-btn" type="submit">CLASSIFY IMAGE</button>
-        </form>
-        <p class="result">Classification: {{ classification }}</p>
-    </div>
-    {% endif %}
+                <button class="mui-btn reset" type="button" onclick="resetForm()">RESET</button>
+            </form>
+        </div>
+    
+        {% if uploaded_image is defined and uploaded_image %}
+        <div>
+            <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image" class="final-image">
+            <form action="/classify" method="post">
+                <button class="mui-btn" type="submit">CLASSIFY IMAGE</button>
+            </form>
+            <p class="result">Classification: {{ classification }}</p>
+        </div>
+        {% endif %}
+    </section>
 
     <!-- JAVASCRIPT -->
     
@@ -166,6 +181,7 @@ function displayImage(event) {
     let uploadedImage = document.getElementById("uploadedimage");
     let imageLabel = document.getElementById("uploadtext");
     let noFileChosen = document.getElementById("nofilechosen");
+    let contentHeight = document.getElementById("content");
 
     if (fileInput.files && fileInput.files[0]) {
         const reader = new FileReader();
@@ -174,6 +190,7 @@ function displayImage(event) {
             uploadedImage.style.display = 'block';
             uploadtext.style.display = 'none';
             nofilechosen.innerHTML = 'Click Upload';
+            contentHeight.style.height = 'auto';
         };
         reader.readAsDataURL(fileInput.files[0]);
     }
