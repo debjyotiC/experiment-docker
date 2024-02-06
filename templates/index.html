@@ -34,9 +34,11 @@
     }
 
     h1 {
+        color: #fff;
         font-family: 'Exo 2', sans-serif;
         font-size: 60px;
         font-weight: 600;
+        margin: 0;
     }
 
     form {
@@ -53,9 +55,20 @@
         border: 1px solid transparent;
         border-radius: 20px;
         box-shadow: 0px 0px 15px 4px rgba(241, 238, 239, 0.8);
-        height: 90vh;
+        height: 85vh;
         margin: auto;
         width: 50%;
+    }
+
+    .main-heading {
+        background-color: #000;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 20px 0;
+    }
+
+    .upload-text, .uploaded-image {
+        margin: 120px 0 80px 0;
     }
 
     .choose-image {
@@ -142,9 +155,11 @@
 <body>
 
     <section class="content" id="content">
-        <h1>IMAGE CLASSIFIER</h1>
+        <div class="main-heading">
+            <h1>IMAGE CLASSIFIER</h1>
+        </div>
 
-        <h2 id="uploadtext">Upload Image</h2>
+        <h2 class="upload-text" id="uploadtext">Upload Image</h2>
         <img src="" alt="Selected-Image" class="uploaded-image" id="uploadedimage">
     
         <div class="file-input-container">
@@ -162,7 +177,7 @@
         </div>
     
         {% if uploaded_image is defined and uploaded_image %}
-        <div>
+        <div class="classify-image" id="classify-image" style="display: none;">
             <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image" class="final-image">
             <form action="/classify" method="post">
                 <button class="mui-btn" type="submit">CLASSIFY IMAGE</button>
@@ -171,6 +186,7 @@
         </div>
         {% endif %}
     </section>
+
 
     <!-- JAVASCRIPT -->
     
@@ -207,6 +223,13 @@ function resetForm() {
     uploadImage.style.display = 'none';
     imageLabel.style.display = 'block';
     uploadtext.style.display = 'block';
+}
+
+function showClassifyImage() {
+    let classifyImage = document.getElementById("classify-image");
+
+    classifyImage.style.display = 'block';
+    contentHeight.style.height = 'auto';
 }
  </script>   
     <!-- BOOTSTRAP -->
