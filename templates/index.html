@@ -42,27 +42,7 @@
         label:hover {
             background-color: #2980b9;
         }
-        .btn-upload {
-            display: inline-block;
-            margin-top: 20px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            line-height: 1.75;
-            letter-spacing: 0.02857em;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            background-color: #2ecc71;
-            color: #fff;
-            border: none;
-        }
-        .btn-upload:hover {
-            background-color: #27ae60;
-        }
+        .btn-upload,
         .btn-classify {
             display: inline-block;
             margin-top: 20px;
@@ -77,9 +57,19 @@
             padding: 10px 20px;
             border-radius: 4px;
             transition: background-color 0.3s;
+        }
+        .btn-upload {
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+        }
+        .btn-classify {
             background-color: #e74c3c;
             color: #fff;
             border: none;
+        }
+        .btn-upload:hover {
+            background-color: #27ae60;
         }
         .btn-classify:hover {
             background-color: #c0392b;
@@ -107,6 +97,28 @@
             width: 30px;
             height: auto;
         }
+
+        /* Media Query for Mobile Devices */
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            form {
+                margin-top: 20px;
+            }
+            label,
+            .btn-upload,
+            .btn-classify {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            img {
+                margin-top: 10px;
+            }
+            footer {
+                margin-top: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,11 +130,11 @@
             <button class="btn-upload" type="submit">Upload</button>
         </form>
         {% if uploaded_image %}
-        <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
-        <form action="/classify" method="post">
-            <button class="btn-classify" type="submit">Classify Image</button>
-        </form>
-        <p class="result">Classification: {{ classification }}</p>
+            <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
+            <form action="/classify" method="post">
+                <button class="btn-classify" type="submit">Classify Image</button>
+            </form>
+            <p class="result">Classification: {{ classification }}</p>
         {% endif %}
     </div>
     <footer>

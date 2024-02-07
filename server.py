@@ -10,6 +10,7 @@ app.secret_key = os.urandom(24)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 UPLOAD_DIR = 'uploaded-images'
 UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_DIR)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
