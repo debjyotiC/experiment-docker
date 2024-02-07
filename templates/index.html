@@ -11,20 +11,21 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             color: #333;
-            padding-top: 20px;
+            padding-top: 5px;
             margin: 0;
         }
         .container {
-            max-width: 800px;
+            max-width: 700px; /* Adjusted max-width */
+            width: 80%; /* Added width */
             margin: 0 auto;
-            padding: 20px;
+            padding: 5px;
         }
         h1 {
             color: #333;
             text-align: center;
         }
         form {
-            margin-top: 40px;
+            margin-top: 10px;
             text-align: center;
         }
         input[type="file"] {
@@ -45,7 +46,7 @@
         .btn-upload,
         .btn-classify {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 5px;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
@@ -75,9 +76,9 @@
             background-color: #c0392b;
         }
         img {
-            max-width: 100%;
+            width: 600px; /* Fixed width for the image */
             height: auto;
-            margin-top: 20px;
+            margin-top: 10px;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -91,7 +92,7 @@
         }
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 10px;
         }
         footer img {
             width: 30px;
@@ -113,6 +114,7 @@
                 font-size: 0.9rem;
             }
             img {
+                width: 90%; /* Adjusted width for smaller screens */
                 margin-top: 10px;
             }
             footer {
@@ -127,6 +129,7 @@
         <form action="/uploader" method="post" enctype="multipart/form-data">
             <input type="file" name="file" id="fileInput" accept=".png, .jpg, .jpeg" required>
             <label for="fileInput" class="btn-upload">Choose Image</label>
+            <input type="text" id="filePath" readonly> <!-- Added text input field -->
             <button class="btn-upload" type="submit">Upload</button>
         </form>
         {% if uploaded_image %}
@@ -141,5 +144,10 @@
         <p>Created by Debjyoti Chowdhury</p>
         <a href="https://github.com/debjyotiC"><img src="/static/images/github-mark.png" alt="GitHub"></a>
     </footer>
+    <script>
+        document.getElementById("fileInput").addEventListener("change", function() {
+            document.getElementById("filePath").value = this.value.split("\\").pop();
+        });
+    </script>
 </body>
 </html>
