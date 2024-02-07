@@ -14,6 +14,10 @@ UPLOAD_DIR = 'uploaded-images'
 UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_DIR)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+DEFAULT_DIR = 'default-image'
+DEFAULT_FOLDER = os.path.join(APP_ROOT, DEFAULT_DIR)
+app.config['DEFAULT_FOLDER'] = DEFAULT_FOLDER
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -81,7 +85,12 @@ def image_classify():
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    upload_folder = app.config['UPLOAD_FOLDER']
+    if os.path.exists(os.path.join(upload_folder, filename)):
+        return send_from_directory(upload_folder, filename)
+    else:
+        # If the requested file doesn't exist, serve the default image
+        return send_from_directory(app.config['DEFAULT_FOLDER'], 'placeholder-image.jpg')
 
 
 if __name__ == '__main__':

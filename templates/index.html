@@ -118,11 +118,11 @@
             <button class="btn-upload" type="submit">Upload</button>
         </form>
         {% if uploaded_image %}
-            <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
-            <form action="/classify" method="post">
-                <button class="btn-classify" type="submit">Classify Image</button>
-            </form>
-            <p class="result">Classification: {{ classification }}</p>
+        <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
+        <form action="/classify" method="post">
+            <button class="btn-classify" type="submit">Classify Image</button>
+        </form>
+        <p class="result">Classification: {{ classification }}</p>
         {% endif %}
     </div>
     <footer>
