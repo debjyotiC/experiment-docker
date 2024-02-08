@@ -23,4 +23,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 5000
 
 # Define the command to run the application and start Nginx
-CMD ["bash", "-c", "service nginx start && python app.py"]
+CMD ["bash", "-c", "service nginx start && python server.py"]
