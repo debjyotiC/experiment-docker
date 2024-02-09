@@ -14,16 +14,22 @@
             color: #333;
             padding-top: 5px;
             margin: 0;
+            position: relative; /* Set position relative */
         }
         .container {
-            max-width: 700px; /* Adjusted max-width */
-            width: 80%; /* Added width */
+            max-width: 700px;
+            width: 80%;
             margin: 0 auto;
             padding: 5px;
         }
         h1 {
             color: #333;
             text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
         }
         form {
             margin-top: 10px;
@@ -77,7 +83,7 @@
             background-color: #c0392b;
         }
         img {
-            width: 600px; /* Fixed width for the image */
+            width: 600px;
             height: auto;
             margin-top: 10px;
             display: block;
@@ -99,6 +105,14 @@
             width: 30px;
             height: auto;
         }
+        /* Visitor Counter Styling */
+        .visitor-counter {
+            color: red; /* Set text color to red */
+            font-weight: bold;
+            position: absolute; /* Set position absolute */
+            bottom: 10px; /* Set bottom distance */
+            left: 10px; /* Set left distance */
+        }
 
         /* Media Query for Mobile Devices */
         @media only screen and (max-width: 600px) {
@@ -115,7 +129,7 @@
                 font-size: 0.9rem;
             }
             img {
-                width: 90%; /* Adjusted width for smaller screens */
+                width: 90%;
                 margin-top: 10px;
             }
             footer {
@@ -127,10 +141,11 @@
 <body>
     <div class="container">
         <h1>Image Classifier</h1>
+        <p>Welcome to our Image Classifier hosted on a Docker container. Upload an image (horse or human) below to classify it.</p>
         <form action="/uploader" method="post" enctype="multipart/form-data">
             <input type="file" name="file" id="fileInput" accept=".png, .jpg, .jpeg" required>
             <label for="fileInput" class="btn-upload">Choose Image</label>
-            <input type="text" id="filePath" readonly> <!-- Added text input field -->
+            <input type="text" id="filePath" readonly>
             <button class="btn-upload" type="submit">Upload</button>
         </form>
         {% if uploaded_image %}
@@ -140,6 +155,10 @@
             </form>
             <p class="result">Classification: {{ classification }}</p>
         {% endif %}
+        <!-- Visitor Counter -->
+        <div class="visitor-counter">
+            <p>Visitor Count: <span id="visitorCount">0</span></p>
+        </div>
     </div>
     <footer>
         <p>Created by Debjyoti Chowdhury</p>
@@ -149,6 +168,18 @@
         document.getElementById("fileInput").addEventListener("change", function() {
             document.getElementById("filePath").value = this.value.split("\\").pop();
         });
+
+        // Visitor counter script
+        let visitorCount = 0; // Initialize visitor count
+
+        // Function to update visitor count
+        function updateVisitorCount() {
+            visitorCount++;
+            document.getElementById("visitorCount").textContent = visitorCount;
+        }
+
+        // Call the function to update visitor count when the page loads
+        updateVisitorCount();
     </script>
 </body>
 </html>
