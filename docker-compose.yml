@@ -1,7 +1,6 @@
 version: '3'
 services:
   flask-app:
-
     image: debjyoti89/flask-app:latest
     container_name: flask-vision
     ports:
