@@ -155,31 +155,10 @@
             </form>
             <p class="result">Classification: {{ classification }}</p>
         {% endif %}
-        <!-- Visitor Counter -->
-        <div class="visitor-counter">
-            <p>Visitor Count: <span id="visitorCount">0</span></p>
-        </div>
     </div>
     <footer>
         <p>Created by Debjyoti Chowdhury</p>
         <a href="https://github.com/debjyotiC"><img src="/static/images/github-mark.png" alt="GitHub"></a>
     </footer>
-    <script>
-        document.getElementById("fileInput").addEventListener("change", function() {
-            document.getElementById("filePath").value = this.value.split("\\").pop();
-        });
-
-        // Visitor counter script
-        let visitorCount = 0; // Initialize visitor count
-
-        // Function to update visitor count
-        function updateVisitorCount() {
-            visitorCount++;
-            document.getElementById("visitorCount").textContent = visitorCount;
-        }
-
-        // Call the function to update visitor count when the page loads
-        updateVisitorCount();
-    </script>
 </body>
 </html>
