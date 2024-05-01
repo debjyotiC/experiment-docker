@@ -30,4 +30,4 @@ Make sure you have the following installed on your machine:
 
 ## The website is at: 
    ```url
-   https://ai.blackbox.io.in/
+   https://vision.blackbox.io.in/
