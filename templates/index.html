@@ -74,7 +74,7 @@
         .btn-classify {
             background-color: #e74c3c;
             color: #fff;
-            border: none;
+            border: none.
         }
         .btn-upload:hover {
             background-color: #27ae60;
@@ -95,48 +95,59 @@
         .result {
             margin-top: 20px;
             font-weight: bold;
-            text-align: center;
+            text-align: center.
         }
         footer {
-            text-align: center;
-            margin-top: 10px;
+            text-align: center.
+            margin-top: 10px.
         }
         footer img {
-            width: 30px;
-            height: auto;
+            width: 30px.
+            height: auto.
         }
         /* Visitor Counter Styling */
         .visitor-counter {
-            color: red; /* Set text color to red */
-            font-weight: bold;
-            position: absolute; /* Set position absolute */
-            bottom: 10px; /* Set bottom distance */
-            left: 10px; /* Set left distance */
+            color: red. /* Set text color to red */
+            font-weight: bold.
+            position: absolute. /* Set position absolute */
+            bottom: 10px. /* Set bottom distance */
+            left: 10px. /* Set left distance */
         }
 
         /* Media Query for Mobile Devices */
         @media only screen and (max-width: 600px) {
             .container {
-                padding: 10px;
+                padding: 10px.
             }
             form {
-                margin-top: 20px;
+                margin-top: 20px.
             }
             label,
             .btn-upload,
             .btn-classify {
-                padding: 8px 16px;
-                font-size: 0.9rem;
+                padding: 8px 16px.
+                font-size: 0.9rem.
             }
             img {
-                width: 90%;
-                margin-top: 10px;
+                width: 90%.
+                margin-top: 10px.
             }
             footer {
-                margin-top: 30px;
+                margin-top: 30px.
             }
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fileInput = document.getElementById("fileInput");
+            const filePath = document.getElementById("filePath");
+
+            fileInput.addEventListener("change", function() {
+                const fileName = fileInput.files[0].name;
+                filePath.value = fileName;
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
