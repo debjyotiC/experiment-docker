@@ -29,5 +29,5 @@ jobs:
           context: .
           push: true
           tags: |
-            debjyoti89/blackboxhome:latest
-            debjyoti89/blackboxhome:${{ env.VERSION }}
+            debjyoti89/flaskapp:latest
+            debjyoti89/flaskapp:${{ env.VERSION }}
