@@ -29,5 +29,5 @@ jobs:
           context: .
           push: true
           tags: |
-            debjyoti89/flaskapp:latest
-            debjyoti89/flaskapp:${{ env.VERSION }}
+            debjyoti89/flask-app:latest
+            debjyoti89/flask-app:${{ env.VERSION }}
