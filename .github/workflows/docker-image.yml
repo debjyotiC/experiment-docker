@@ -31,3 +31,5 @@ jobs:
           tags: |
             debjyoti89/flask-app:latest
             debjyoti89/flask-app:${{ env.VERSION }}
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ env.VERSION }}
