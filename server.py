@@ -95,5 +95,4 @@ def uploaded_file(filename):
 
 
 if __name__ == '__main__':
-    # Run the Flask application
     app.run(port=5000, debug=True)
