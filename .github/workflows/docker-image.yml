@@ -31,5 +31,5 @@ jobs:
           tags: |
             debjyoti89/flask-app:latest
             debjyoti89/flask-app:${{ env.VERSION }}
-            ghcr.io/${{ github.repository_owner }}/experiment-docker:latest
-            ghcr.io/${{ github.repository_owner }}/experiment-docker:${{ env.VERSION }}
+            ghcr.io/debjyotic/experiment-docker:latest
+            ghcr.io/debjyotic/experiment-docker:${{ env.VERSION }}
